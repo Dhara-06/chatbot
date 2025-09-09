@@ -1,11 +1,11 @@
-# main.py
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from granite_service import ask_granite  # ✅ import Granite client
+from granite_service import ask_granite  
 
 app = FastAPI()
 
-# Allow CORS
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -28,7 +28,7 @@ async def generate_handler(request: Request):
         output_text = ask_granite(user_input)
         return {"response": output_text}
     except Exception as e:
-        print("DEBUG ERROR:", traceback.format_exc())  # 👈 log full error
+        print("DEBUG ERROR:", traceback.format_exc()) 
         return {"error": str(e)}
 
 

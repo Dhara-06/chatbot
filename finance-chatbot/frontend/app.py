@@ -1,10 +1,10 @@
 import streamlit as st
 import requests
 
-# Page configuration
+
 st.set_page_config(page_title="Personal Finance Chatbot", page_icon="💰", layout="wide")
 
-# Sidebar content
+
 with st.sidebar:
     st.header("💡 Info")
     st.write("""
@@ -15,14 +15,14 @@ with st.sidebar:
     model = st.selectbox("Choose model", ["Default AI", "Advanced AI"])
     st.markdown("Adjust the settings if needed.")
 
-# Main title
+
 st.markdown("<h1 style='text-align: center;'>💰 Personal Finance Chatbot</h1>", unsafe_allow_html=True)
 
-# Initialize chat history
+
 if "messages" not in st.session_state:
     st.session_state["messages"] = []
 
-# Chat display area
+
 chat_container = st.container()
 
 with chat_container:
@@ -40,13 +40,13 @@ with chat_container:
             </div>
             """, unsafe_allow_html=True)
 
-# Input area
+
 with st.form("input_form", clear_on_submit=True):
     prompt = st.text_input("Ask a financial question...", "")
     submit = st.form_submit_button("Send")
 
 if submit and prompt.strip() != "":
-    # Add user message
+
     st.session_state["messages"].append({"role": "user", "content": prompt})
     with chat_container:
         st.markdown(f"""
@@ -55,7 +55,7 @@ if submit and prompt.strip() != "":
         </div>
         """, unsafe_allow_html=True)
 
-    # Call backend
+   
     with st.spinner("Analyzing with AI..."):
         try:
             response = requests.post(
@@ -67,7 +67,7 @@ if submit and prompt.strip() != "":
                 if "response" in result:
                     bot_reply = result["response"]
 
-                    # Add bot reply
+                
                     st.session_state["messages"].append({"role": "assistant", "content": bot_reply})
                     with chat_container:
                         st.markdown(f"""

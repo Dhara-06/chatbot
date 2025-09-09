@@ -1,11 +1,11 @@
-# granite_service.py
+
 import os
 from huggingface_hub import InferenceClient
 from dotenv import load_dotenv
 
 load_dotenv()
 
-HF_TOKEN = os.getenv("HF_API_KEY")  # keep one key name in .env
+HF_TOKEN = os.getenv("HF_API_KEY")  
 MODEL_ID = "ibm-granite/granite-3.3-8b-base"
 
 client = InferenceClient(model=MODEL_ID, token=HF_TOKEN)
