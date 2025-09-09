@@ -8,6 +8,9 @@ load_dotenv()
 HF_TOKEN = os.getenv("HF_API_KEY")  
 MODEL_ID = "ibm-granite/granite-3.3-8b-base"
 
+print("HF_TOKEN loaded:", HF_TOKEN is not None)
+print("HF_TOKEN:", HF_TOKEN)
+
 client = InferenceClient(model=MODEL_ID, token=HF_TOKEN)
 
 def ask_granite(prompt: str) -> str:
