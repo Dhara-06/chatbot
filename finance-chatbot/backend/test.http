@@ -1,0 +1,6 @@
+POST http://127.0.0.1:8000/nlu
+Content-Type: application/json
+
+{
+    "text": "How can I save while repaying student loans?"
+}
